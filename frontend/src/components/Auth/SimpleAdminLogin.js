@@ -10,6 +10,7 @@ const SimpleAdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +19,7 @@ const SimpleAdminLogin = () => {
 
     try {
       console.log('Attempting admin login with:', { email, password }); // للـ debugging
-      const res = await axios.post('http://localhost:5000/api/login', { email, password });
+      const res = await axios.post(`${API_URL}/api/login`, { email, password });
       console.log('Admin login response:', res.data); // للـ debugging
       
       localStorage.setItem('token', res.data.token);

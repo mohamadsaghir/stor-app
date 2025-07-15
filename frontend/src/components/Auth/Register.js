@@ -14,6 +14,7 @@ const Register = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,7 +39,7 @@ const Register = () => {
       setError('');
       setLoading(true);
       
-      const response = await axios.post('http://localhost:5000/api/register', {
+      const response = await axios.post(`${API_URL}/api/register`, {
         username: formData.username,
         email: formData.email,
         password: formData.password

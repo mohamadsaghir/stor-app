@@ -166,6 +166,8 @@ const AdminUserManagement = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const API_URL = process.env.REACT_APP_API_URL;
+
   const fetchUsers = async () => {
     setLoading(true);
     try {
@@ -178,7 +180,7 @@ const AdminUserManagement = () => {
         return;
       }
       
-      const res = await axios.get('http://localhost:5000/api/users', {
+      const res = await axios.get(`${API_URL}/api/users`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -207,7 +209,7 @@ const AdminUserManagement = () => {
   const handleDelete = async (userId) => {
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:5000/api/users/${userId}`, {
+      await axios.delete(`${API_URL}/api/users/${userId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -221,7 +223,7 @@ const AdminUserManagement = () => {
   const handlePasswordChange = async (userId, newPassword) => {
     const token = localStorage.getItem('token');
     try {
-      await axios.put(`http://localhost:5000/api/users/${userId}/password`, 
+      await axios.put(`${API_URL}/api/users/${userId}/password`, 
         { password: newPassword },
         {
           headers: {
@@ -237,7 +239,7 @@ const AdminUserManagement = () => {
   const handleSuspendAccount = async (userId, suspend) => {
     const token = localStorage.getItem('token');
     try {
-      await axios.put(`http://localhost:5000/api/users/${userId}/suspend`, 
+      await axios.put(`${API_URL}/api/users/${userId}/suspend`, 
         { suspended: suspend },
         {
           headers: {
@@ -270,7 +272,7 @@ const AdminUserManagement = () => {
     // Fetch current user data
     const token = localStorage.getItem('token');
     if (token) {
-      fetch('http://localhost:5000/api/me', {
+      fetch(`${API_URL}/api/me`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

@@ -214,7 +214,8 @@ export default function CashOut() {
       const token = localStorage.getItem('token');
       if (!token) return;
       try {
-        const response = await fetch('http://localhost:5000/api/products', {
+        const API_URL = process.env.REACT_APP_API_URL;
+        const response = await fetch(`${API_URL}/api/products`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (response.ok) {
@@ -274,7 +275,8 @@ export default function CashOut() {
     setErrorMsg('');
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/products/decrement-quantity', {
+      const API_URL = process.env.REACT_APP_API_URL;
+      const res = await fetch(`${API_URL}/api/products/decrement-quantity`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -310,7 +312,8 @@ export default function CashOut() {
       : '';
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/debts', {
+      const API_URL = process.env.REACT_APP_API_URL;
+      const res = await fetch(`${API_URL}/api/debts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 import './DebtManager.css';
 
-const API_BASE = 'http://localhost:5000/api/debts';
+const API_BASE = process.env.REACT_APP_API_URL + '/api/debts';
 
 const inputStyle = {
   padding: '10px',

@@ -18,11 +18,13 @@ const NetProfit = () => {
   const [loading, setLoading] = useState(true);
   const [changeHistory, setChangeHistory] = useState([]);
 
+  const API_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const fetchProducts = async () => {
       const token = localStorage.getItem('token');
       try {
-        const res = await axios.get('http://localhost:5000/api/products', {
+        const res = await axios.get(`${API_URL}/api/products`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setProducts(res.data.products || []);
@@ -49,7 +51,7 @@ const NetProfit = () => {
     const token = localStorage.getItem('token');
     const fetchChangeHistory = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/product-changes', {
+        const res = await axios.get(`${API_URL}/api/product-changes`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         // فلترة التغييرات - إخفاء عمليات الحذف والإضافة
@@ -125,11 +127,11 @@ const NetProfit = () => {
     if (window.confirm('هل أنت متأكد من حذف هذا التسجيل؟')) {
       const token = localStorage.getItem('token');
       try {
-        await axios.delete(`http://localhost:5000/api/product-changes/${changeId}`, {
+        await axios.delete(`${API_URL}/api/product-changes/${changeId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         // إعادة تحميل البيانات بعد الحذف
-        const res = await axios.get('http://localhost:5000/api/product-changes', {
+        const res = await axios.get(`${API_URL}/api/product-changes`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const filteredChanges = (res.data.changes || []).filter(change => 
@@ -229,7 +231,7 @@ const NetProfit = () => {
                       const fetchProducts = async () => {
                         const token = localStorage.getItem('token');
                         try {
-                          const res = await axios.get('http://localhost:5000/api/products', {
+                          const res = await axios.get(`${API_URL}/api/products`, {
                             headers: { Authorization: `Bearer ${token}` }
                           });
                           setProducts(res.data.products || []);
