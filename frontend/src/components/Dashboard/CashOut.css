@@ -1,0 +1,156 @@
+/* CashOut.css - متناسق مع ستايل البرنامج */
+
+.cashout-content {
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 80vh;
+  background: var(--bg-primary, #181824);
+  /* overflow: visible !important; */
+}
+
+.cashout-card-main {
+  background: var(--bg-card, #232336);
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg, 0 8px 32px rgba(0,0,0,0.18));
+  padding: 32px 28px 24px 28px;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  border: 1.5px solid var(--border-color, #2d2d3a);
+  position: relative;
+  z-index: 10;
+  direction: rtl;
+}
+
+.cashout-title {
+  text-align: center;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--primary-color, #8b5cf6);
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+.cashout-search-dropdown {
+  background: var(--bg-input, #232336);
+  border: 1.5px solid var(--border-input, #3a3a4d);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.cashout-search-item {
+  padding: 12px 18px;
+  cursor: pointer;
+  color: var(--text-primary, #e0e0e0);
+  transition: background 0.2s;
+  font-size: 1.08rem;
+}
+.cashout-search-item:hover {
+  background: var(--primary-color, #8b5cf6);
+  color: #fff;
+}
+
+.cashout-bill-list {
+  margin-bottom: 18px;
+  margin-top: 10px;
+}
+
+.cashout-bill-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color, #2d2d3a);
+  padding: 7px 0;
+  gap: 8px;
+}
+
+.cashout-bill-name {
+  flex: 1;
+  font-weight: 500;
+  color: var(--text-primary, #e0e0e0);
+}
+
+.cashout-bill-qty {
+  width: 48px;
+  border-radius: 8px;
+  border: 1px solid var(--border-input, #3a3a4d);
+  padding: 4px 6px;
+  background: var(--bg-input, #232336);
+  color: var(--text-primary, #e0e0e0);
+  text-align: center;
+  font-size: 1rem;
+}
+
+.cashout-bill-price {
+  min-width: 70px;
+  text-align: left;
+  color: var(--primary-color, #8b5cf6);
+  font-weight: 600;
+}
+
+.cashout-bill-remove {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cashout-bill-remove:hover {
+  background: #b71c1c;
+}
+
+.cashout-total {
+  margin-bottom: 18px;
+  font-size: 1.15rem;
+  color: var(--primary-color, #8b5cf6);
+  font-weight: 700;
+  text-align: center;
+}
+
+.cashout-wa-btn {
+  display: block;
+  width: 100%;
+  background: #25D366;
+  color: #fff;
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  margin-bottom: 0;
+  box-shadow: 0 2px 8px rgba(37,211,102,0.08);
+  transition: background 0.2s;
+}
+.cashout-wa-btn:hover {
+  background: #128C7E;
+}
+
+.cashout-empty {
+  color: #888;
+  font-size: 1rem;
+  margin: 8px 0 0 0;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .cashout-card-main {
+    padding: 18px 6px 14px 6px;
+    max-width: 98vw;
+  }
+  .cashout-title {
+    font-size: 1.3rem;
+  }
+}
+
+.dashboard-content {
+  /* overflow: visible !important; */
+} 

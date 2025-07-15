@@ -1,0 +1,314 @@
+/* NetProfit Styles */
+.net-profit-container {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 32px;
+  padding: 32px;
+  max-width: 800px;
+  margin: 40px auto;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+  text-align: center;
+}
+
+.net-profit-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 18px 0 12px 0;
+  box-shadow: 0 2px 12px rgba(102, 126, 234, 0.10);
+}
+
+.loading {
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+/* Products Summary Section */
+.products-summary {
+  margin: 32px 0;
+  text-align: center;
+}
+
+.products-summary h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-item:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  color: #fff;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .net-profit-container {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+  }
+  
+  .net-profit-value {
+    font-size: 2rem;
+  }
+  
+  .summary-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .net-profit-container {
+    margin: 10px;
+    padding: 16px;
+  }
+  
+  .net-profit-value {
+    font-size: 1.8rem;
+  }
+  
+  .products-summary h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Changes Table Section */
+.changes-table-section {
+  margin: 32px 0;
+  text-align: center;
+}
+
+.changes-table-section h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.table-header h3 {
+  margin-bottom: 0;
+}
+
+.refresh-btn {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.changes-table-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow-x: auto;
+}
+
+.changes-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+.changes-table thead th {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 12px 8px;
+  font-weight: bold;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+}
+
+.changes-table tbody td {
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.changes-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* صفوف المنتجات ذات الكمية 0 */
+.changes-table tbody tr.zero-quantity {
+  background: rgba(244, 67, 54, 0.2);
+  border-left: 4px solid #f44336;
+}
+
+.changes-table tbody tr.zero-quantity:hover {
+  background: rgba(244, 67, 54, 0.3);
+}
+
+.changes-table tbody tr.zero-quantity td {
+  color: #fff;
+  font-weight: bold;
+}
+
+.pin-icon {
+  margin-right: 8px;
+  font-size: 1rem;
+  animation: pulse 2s infinite;
+}
+
+.pin-note {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-weight: normal;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.change-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.quantity-change {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.quantity-change.increase {
+  background: rgba(76, 175, 80, 0.3);
+  color: #4CAF50;
+}
+
+.quantity-change.decrease {
+  background: rgba(244, 67, 54, 0.3);
+  color: #f44336;
+}
+
+.change-details {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.no-data {
+  text-align: center;
+  font-style: italic;
+  opacity: 0.7;
+  padding: 20px;
+}
+
+.delete-btn {
+  background: linear-gradient(45deg, #f44336, #d32f2f);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design for Table */
+@media (max-width: 768px) {
+  .table-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .refresh-btn {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+  
+  .changes-table-container {
+    padding: 15px;
+  }
+  
+  .changes-table {
+    font-size: 0.8rem;
+  }
+  
+  .changes-table thead th,
+  .changes-table tbody td {
+    padding: 8px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .changes-table-section h3 {
+    font-size: 1.3rem;
+  }
+  
+  .changes-table {
+    font-size: 0.75rem;
+  }
+  
+  .changes-table thead th,
+  .changes-table tbody td {
+    padding: 6px 4px;
+  }
+} 
