@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cors({
   origin: [
     'http://localhost:3000', // لتجربة محليًا
-    'https://stor-app-seven.vercel.app' // رابط الفرونت اند على Vercel
+    'https://stor-app-theta.vercel.app' // فقط الدومين الجديد على Vercel
   ],
   credentials: true
 }));
