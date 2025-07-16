@@ -69,9 +69,10 @@ const AddProduct = ({ onAdd, onUpdate, editingProduct, cancelEdit, searchTerm, o
     };
 
     try {
+      const API_URL = process.env.REACT_APP_API_URL;
       if (editingProduct) {
         const response = await axios.put(
-          `http://localhost:5000/api/products/${editingProduct._id}`,
+          `${API_URL}/api/products/${editingProduct._id}`,
           dataToSend,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -81,7 +82,7 @@ const AddProduct = ({ onAdd, onUpdate, editingProduct, cancelEdit, searchTerm, o
         setMessage('تم تحديث المنتج بنجاح');
       } else {
         const response = await axios.post(
-          'http://localhost:5000/api/products',
+          `${API_URL}/api/products`,
           dataToSend,
           {
             headers: { Authorization: `Bearer ${token}` },

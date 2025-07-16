@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import ForgotPasswordNavbar from '../Navbar/ForgotPasswordNavbar';
 import './ForgotPassword.css';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom'; // تم الحذف لأنه غير مستخدم
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate(); // تم الحذف لأنه غير مستخدم
 
   const handleSubmit = async (e) => {
     e.preventDefault();

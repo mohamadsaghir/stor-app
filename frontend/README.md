@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## إعداد متغيرات البيئة
+
+تأكد من وجود ملف `.env` في مجلد الواجهة الأمامية (frontend) ويحتوي على السطر التالي:
+
+```
+REACT_APP_API_URL=https://stor-app-8o5l.onrender.com
+```
+
+إذا تغير رابط السيرفر، قم بتحديث هذا المتغير.
