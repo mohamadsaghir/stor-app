@@ -22,8 +22,8 @@ console.log('SENDGRID_API_KEY:', process.env.SENDGRID_API_KEY);
 app.use(express.json());
 app.use(cors({
   origin: [
-    'http://localhost:3000', // لتجربة محليًا
-    'https://stor-app-theta.vercel.app' // فقط الدومين الجديد على Vercel
+    'https://stor-app-three.vercel.app/', // فقط الدومين الجديد على Vercel
+ // الدومين الجديد الذي يحتاج السماح
   ],
   credentials: true
 }));
@@ -396,7 +396,8 @@ app.post('/api/forgot-password', async (req, res) => {
     await user.save();
 
     // إنشاء رابط إعادة التعيين
-    const resetUrl = `http://localhost:3000/reset-password/${resetToken}`;
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+    const resetUrl = `${frontendUrl}/reset-password/${resetToken}`;
 
     // محتوى البريد الإلكتروني
     const emailContent = `
