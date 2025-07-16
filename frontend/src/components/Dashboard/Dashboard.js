@@ -13,9 +13,12 @@ const Dashboard = () => {
   const [showNotifications, setShowNotifications] = useState([]);
   const navigate = useNavigate();
 
+  const API_URL = process.env.REACT_APP_API_URL;
+  console.log('API_URL:', process.env.REACT_APP_API_URL);
+
   const fetchUserData = useCallback(async (token) => {
     try {
-      const response = await fetch('http://localhost:5000/api/me', {
+      const response = await fetch(`${API_URL}/api/me`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -36,7 +39,7 @@ const Dashboard = () => {
     } finally {
       setLoading(false);
     }
-  }, [navigate]);
+  }, [navigate, API_URL]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -54,7 +57,7 @@ const Dashboard = () => {
     const fetchPinned = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/products', {
+        const res = await axios.get(`${API_URL}/api/products`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const zeroProducts = (res.data.products || []).filter(p => p.quantity === 0);
@@ -68,7 +71,7 @@ const Dashboard = () => {
       }
     };
     fetchPinned();
-  }, []);
+  }, [API_URL]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
