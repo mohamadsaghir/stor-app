@@ -28,7 +28,7 @@ const ChangePassword = () => {
     try {
       // تحتاج endpoint في الباكند مثل /api/change-password
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/change-password', {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/change-password`, {
         oldPassword,
         newPassword
       }, {
