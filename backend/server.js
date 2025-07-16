@@ -19,14 +19,13 @@ const productsRouter = require('./routes/products');
 console.log('MONGODB_URI:', process.env.MONGODB_URI);
 console.log('SENDGRID_API_KEY:', process.env.SENDGRID_API_KEY);
 
-app.use(express.json());
 app.use(cors({
   origin: [
-    'https://stor-app-three.vercel.app/', // فقط الدومين الجديد على Vercel
- // الدومين الجديد الذي يحتاج السماح
+    'https://stor-app-three.vercel.app'
   ],
   credentials: true
 }));
+app.use(express.json());
 
 // تسجيل مستخدم جديد
 app.post('/api/register', async (req, res) => {
