@@ -21,7 +21,10 @@ console.log('SENDGRID_API_KEY:', process.env.SENDGRID_API_KEY);
 
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: [
+    'http://localhost:3000', // لتجربة محليًا
+    'https://stor-app-seven.vercel.app' // رابط الفرونت اند على Vercel
+  ],
   credentials: true
 }));
 
