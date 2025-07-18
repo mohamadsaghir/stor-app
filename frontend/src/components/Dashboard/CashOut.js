@@ -264,7 +264,7 @@ export default function CashOut() {
   const today = new Date();
   const formattedDate = today.toLocaleDateString();
   // WhatsApp message (DebtManager style)
-  const waMessage = `فاتورة دين:\nالاسم: ${customer}\nرقم الهاتف: ${phone}\nالتاريخ: ${formattedDate}\nالمبلغ: ${total}\n${billProducts.length ? `المنتجات:\n${billProducts.map(p => `- ${p.name} × ${p.qty} : ${(p.total * p.qty).toFixed(2)}$`).join('\n')}` : ''}\n\nيرجى تسديد المبلغ في أقرب وقت ممكن. شكراً لك!`;
+  const waMessage = `فاتورة شراء:\nالاسم: ${customer}\nرقم الهاتف: ${phone}\nالتاريخ: ${formattedDate}\nالمبلغ: ${total}\n${billProducts.length ? `المنتجات:\n${billProducts.map(p => `- ${p.name} × ${p.qty} : ${(p.total * p.qty).toFixed(2)}$`).join('\n')}` : ''}\n\nيرجى تسديد المبلغ في أقرب وقت ممكن. شكراً لك!`;
   const waLink = `https://wa.me/${phone ? `+961${phone}` : ''}?text=${encodeURIComponent(waMessage)}`;
 
   // Decrement quantities after sending
