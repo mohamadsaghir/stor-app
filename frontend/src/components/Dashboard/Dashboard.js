@@ -30,14 +30,21 @@ const Dashboard = () => {
         if (data.user && data.user._id) {
           localStorage.setItem('userId', data.user._id);
         }
+        localStorage.removeItem('dummy_token_failed');
         console.log('User data:', data.user); // للتحقق من البيانات
       } else {
         localStorage.removeItem('token');
+        if (token === 'header.eyJleHAiOjk5OTk5OTk5OTl9.signature') {
+          localStorage.setItem('dummy_token_failed', 'true');
+        }
         navigate('/login');
       }
     } catch (error) {
       console.error('Error fetching user data:', error);
       localStorage.removeItem('token');
+      if (token === 'header.eyJleHAiOjk5OTk5OTk5OTl9.signature') {
+        localStorage.setItem('dummy_token_failed', 'true');
+      }
       navigate('/login');
     } finally {
       setLoading(false);

@@ -10,11 +10,14 @@ const Login = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (!token) {
+    const failed = localStorage.getItem('dummy_token_failed');
+    if (!token && !failed) {
       localStorage.setItem('token', 'header.eyJleHAiOjk5OTk5OTk5OTl9.signature');
       localStorage.setItem('userId', 'dummy_userId');
+      navigate('/dashboard');
+    } else if (token && token !== 'header.eyJleHAiOjk5OTk5OTk5OTl9.signature') {
+      navigate('/dashboard');
     }
-    navigate('/dashboard');
   }, [navigate]);
 
   const [formData, setFormData] = useState({
@@ -24,7 +27,6 @@ const Login = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,6 +51,7 @@ const Login = () => {
       
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('userId', res.data.userId);
+      localStorage.removeItem('dummy_token_failed');
       
       console.log('Token saved:', res.data.token); // للـ debugging
       console.log('User ID saved:', res.data.userId); // للـ debugging
