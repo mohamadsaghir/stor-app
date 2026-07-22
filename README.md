@@ -1,116 +1,86 @@
-# Store App (نظام إدارة المخازن والمبيعات)
+# Store App
 
-A comprehensive store management application to track products, quantities, sales, profit changes, debts, and cash flow. 
+A comprehensive store management application to track products, quantities, sales, profit changes, debts, and cash flow.
 
-نظام متكامل لإدارة المخازن والمستودعات ومتابعة المنتجات، الكميات، المبيعات، الأرباح، الديون، وحركة النقدية اليومية.
+## Table of Contents
+- [Key Features](#key-features)
+- [Tech Stack](#tech-stack)
+- [Installation and Setup](#installation-and-setup)
+- [Default Credentials](#default-credentials)
+- [Auto-Login Bypass](#auto-login-bypass)
+- [Admin Access](#admin-access)
 
----
+## Key Features
+- Product and Stock Management: Add new products, update prices, and track remaining stock.
+- Profit Tracking: Calculate net profit per product and total store earnings.
+- Debt Management: Monitor customer and supplier debts.
+- Stock Change Logs: Review changes made to product quantities.
+- Cash Out: Track and manage daily store expenses and payments.
+- Auto-Login Bypass: Bypasses the login screen to access the store dashboard directly.
 
-## 📖 جدول المحتويات (Table of Contents)
-- [المميزات الرئيسية (Key Features)](#المميزات-الرئيسية-key-features)
-- [تقنيات العمل (Tech Stack)](#تقنيات-العمل-tech-stack)
-- [كيفية التثبيت والتشغيل (Installation & Setup)](#كيفية-التثبيت-والتشغيل-installation--setup)
-- [تجاوز صفحة تسجيل الدخول (Auto-Login Bypass)](#تجاوز-صفحة-تسجيل-الدخول-auto-login-bypass)
-- [إدارة النظام والمسؤولين (Admin Access)](#إدارة-النظام-والمسؤولين-admin-access)
+## Tech Stack
+### Backend
+- Node.js & Express
+- MongoDB & Mongoose
+- JWT (JSON Web Tokens)
+- Bcrypt.js
 
----
+### Frontend
+- React.js
+- React Router Dom
+- Axios
 
-## المميزات الرئيسية (Key Features)
+## Installation and Setup
 
-* **إدارة المنتجات والمخزون:** إضافة منتجات جديدة، تعديل الأسعار، ومتابعة الكميات المتوفرة بالمخزن.
-* **حسابات الأرباح:** حساب تلقائي وصافي الأرباح لكل منتج والربح الصافي الإجمالي للمتجر.
-* **إدارة الديون (Debt Manager):** تسجيل ومتابعة الديون والذمم للعملاء والموردين.
-* **سجل تغييرات المخزون:** توثيق كامل لكل عملية إضافة، سحب، أو تعديل للكميات.
-* **تسجيل النقدية الخارجة (Cash Out):** إدارة وتوثيق المصاريف والمدفوعات اليومية خارج المتجر.
-* **دعم الدخول التلقائي (Auto-Login Bypass):** تجاوز شاشة تسجيل الدخول للدخول الفوري كـ "مستخدم" لتسهيل وسرعة العمل.
+### Prerequisites
+- Node.js (version 18 or higher)
+- MongoDB running locally or remotely
 
----
-
-## تقنيات العمل (Tech Stack)
-
-### الخلفية (Backend)
-- **Node.js & Express**: لبناء خادم الويب وإدارة مسارات الـ API.
-- **MongoDB & Mongoose**: لتخزين البيانات وإدارة الجداول والعلاقات.
-- **JWT (JSON Web Tokens)**: لإدارة الجلسات للمسؤولين.
-- **Bcrypt.js**: لتشفير كلمات المرور.
-
-### الواجهة (Frontend)
-- **React.js**: لبناء واجهة مستخدم تفاعلية (SPA).
-- **React Router Dom**: لإدارة المسارات داخل التطبيق.
-- **Axios**: للاتصال وتبادل البيانات مع الـ API الخلفي.
-
----
-
-## كيفية التثبيت والتشغيل (Installation & Setup)
-
-### المتطلبات الأساسية (Prerequisites)
-تأكد من تثبيت بيئة **[Node.js](https://nodejs.org/)** وقاعدة بيانات **MongoDB**.
-
-### خطوات التثبيت (Installation Steps)
-
-1. قم بفتح مجلد المشروع وتثبيت الحزم للـ Backend والـ Frontend:
+### Steps
+1. Install dependencies for the project, backend, and frontend:
    ```bash
-   # تثبيت حزم المجلد الرئيسي والخلفية
    npm install
    cd backend
    npm install
-
-   # تثبيت حزم الواجهة الأمامية
    cd ../frontend
    npm install
    ```
-
-2. قم بتهيئة ملف الإعدادات البيئية `.env` في مجلد الـ `backend`:
-   * قم بإنشاء ملف `.env` في مسار `backend/.env` يحتوي على:
+2. Configure environment variables:
+   - Create a `.env` file in the `backend` directory containing:
      ```env
      PORT=5000
      MONGODB_URI=your_mongodb_connection_string
      JWT_SECRET=your_jwt_secret_key
      ```
-   * قم بتهيئة ملف `.env` في مسار `frontend/.env` يحتوي على:
+   - Create a `.env` file in the `frontend` directory containing:
      ```env
      REACT_APP_API_URL=http://localhost:5000
      ```
-
-### تشغيل البرنامج (Running the Application)
-
-1. **تشغيل الخلفية (Backend Server):**
+3. Run the backend server:
    ```bash
    cd backend
    npm start
    ```
-
-2. **تشغيل الواجهة الأمامية (Frontend App):**
+4. Run the frontend application:
    ```bash
    cd frontend
    npm start
    ```
 
----
+## Default Credentials
 
-## تجاوز شاشة تسجيل الدخول (Auto-Login Bypass)
+### Store User Account (Auto-Logged In)
+- Email: (Bypassed automatically, first active user is used)
+- Password: (Bypassed automatically, no password needed)
 
-تم تعديل نظام التحقق في الواجهة والخلفية لتجاوز شاشة تسجيل الدخول التقليدية:
+### Admin Account (Admin Panel)
+- Email: admin@admin.com
+- Password: Admin
 
-1. **في الواجهة الأمامية (`frontend/src/components/Auth/Login.js`):**
-   * عند تحميل المكون (Component Mount)، يتم فحص وجود رمز مصادقة.
-   * في حال عدم وجود رمز، يتم حقن رمز افتراضي مؤقت (`token` و `userId`) تلقائياً.
-   * يتم توجيه المتصفح فوراً وبشكل تلقائي لصفحة لوحة التحكم (`/dashboard`).
-   * يتم استبدال وتصحيح رمز المستخدم و `userId` بالمعلومات الحقيقية فور استلام بيانات الحساب الفعلي من خادم الويب.
+## Auto-Login Bypass
+- The system automatically authenticates client requests by falling back to the first active (non-suspended) user in the MongoDB database.
+- When mounting the Login component, a dummy token is generated in localStorage, and the page redirects to /dashboard instantly.
 
-2. **في الخلفية (`backend/middleware/auth.js`):**
-   * تم تعديل وسيط التحقق `verifyToken` بحيث عند استلام طلب لا يحتوي على رمز حقيقي، يبحث الخادم تلقائياً عن أول مستخدم نشط (غير موقف) في قاعدة بيانات MongoDB ويعتمده لإنجاز العملية بنجاح.
-
----
-
-## إدارة النظام والمسؤولين (Admin Access)
-
-إذا كنت ترغب في إدارة المستخدمين والاطلاع على الصلاحيات الكاملة، يمكنك الدخول بحساب الأدمن كالتالي:
-
-1. توجه للمسار التالي في المتصفح: `/simple-admin-login`
-2. قم بتسجيل الدخول بحساب الأدمن الخاص بك.
-3. سيتم تحويلك إلى لوحة الإدارة الكاملة `/AdminUserManagement`.
-
----
-
-&copy; 2026 Store App. جميع الحقوق محفوظة.
+## Admin Access
+- To access the admin panel, navigate to `/simple-admin-login` in your browser.
+- Login using the Admin credentials listed above.
