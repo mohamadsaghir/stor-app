@@ -21,7 +21,9 @@ console.log('SENDGRID_API_KEY:', process.env.SENDGRID_API_KEY);
 
 app.use(cors({
   origin: [
-    'https://stor-app-three.vercel.app'
+    'https://stor-app-three.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5000'
   ],
   credentials: true
 }));
