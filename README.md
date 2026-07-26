@@ -1,4 +1,4 @@
-# Store App
+# Store App POS
 
 A comprehensive store management application to track products, quantities, sales, profit changes, debts, and cash flow.
 
